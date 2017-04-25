@@ -23,6 +23,7 @@
         <el-date-picker
           v-model="selectedDatetime"
           type="datetime"
+          format="yyyy/MM/dd HH:mm"
           placeholder="Select date and time">
         </el-date-picker>
       </div>
@@ -105,12 +106,13 @@
       }
     },
     mounted () {
-      API.getDataTypes().then((response) => {
-        this.dataTypes = response.body
-      })
       API.getLocations().then((response) => {
         this.locations = response.body
       })
+      API.getDataTypes().then((response) => {
+        this.dataTypes = response.body
+      })
+
     }
   }
 </script>

@@ -13,6 +13,13 @@ import AdminDefault from '@/components/admin/default/default.vue'
 import PendingDataPoint from '@/components/admin/pending_data/pending_data.vue'
 import PendingOfficial from '@/components/admin/pending_official/pending_official.vue'
 
+import Official from '@/components/city_official/city_official.vue'
+import OfficialDefault from '@/components/city_official/default/default.vue'
+import POIFilter from '@/components/city_official/POI_Filter/POI_Filter.vue'
+import POIDetail from '@/components/city_official/poi_detail/poi_detail.vue'
+
+import POIReport from '@/components/city_official/POI_Report/POI_Report.vue'
+
 
 
 const routes = [
@@ -39,17 +46,23 @@ const routes = [
       {
         path: '',
         component: ScientistDefault,
-        name: 'ScientistDefault',
+        name: 'ScientistDefault'
       },
       {
         path: 'addpoint',
         component: DataPoint,
         name: 'addpoint',
+        meta: {
+          parent: 'ScientistDefault'
+        }
       },
       {
         path: 'addpoi',
         component: ADDPOI,
         name: 'addpoi',
+        meta: {
+          parent: 'ScientistDefault'
+        }
       }
     ]
   },
@@ -60,17 +73,58 @@ const routes = [
       {
         path: '',
         component: AdminDefault,
-        name: 'AdminDefault',
+        name: 'AdminDefault'
       },
       {
         path: 'pendingdata',
         component: PendingDataPoint,
         name: 'PendingDataPoint',
+        meta: {
+          parent: 'AdminDefault'
+        }
       },
       {
         path: 'pendingofficial',
         component: PendingOfficial,
         name: 'PendingOfficial',
+        meta: {
+          parent: 'AdminDefault'
+        }
+      }
+    ]
+  },
+  {
+    path: '/official',
+    component: Official,
+    children: [
+      {
+        path: '',
+        component: OfficialDefault,
+        name: 'OfficialDefault',
+      },
+      {
+        path: 'poifilter',
+        component: POIFilter,
+        name: 'POIFilter',
+        meta: {
+          parent: 'OfficialDefault'
+        }
+      },
+      {
+        path: ':poi/poidetail',
+        name: 'POIDetail',
+        component: POIDetail,
+        meta: {
+          parent: 'POIFilter'
+        }
+      },
+      {
+        path: 'poireport',
+        name: 'POIReport',
+        component: POIReport,
+        meta: {
+          parent: 'OfficialDefault'
+        }
       }
     ]
   }

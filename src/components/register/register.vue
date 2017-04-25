@@ -73,6 +73,7 @@
         </div>
         <div class="col-10 reset-col">
           <el-input type="text" v-model="title" auto-complete="off" placeholder="Enter Title"></el-input>
+          <span v-show="errors.has('title')" class="form-text help is-danger" style="text-align: left;">{{ errors.first('title') }}</span>
         </div>
       </div>
     </div>
@@ -166,6 +167,12 @@
           this.$validator.attach('stateSelected', 'required', {
             prettyName: 'state',
             context: () => this.stateSelected,
+            getter: (context) => context
+          })
+
+          this.$validator.attach('title', 'required', {
+            prettyName: 'title',
+            context: () => this.title,
             getter: (context) => context
           })
         } else {

@@ -83,11 +83,11 @@
         var params = {
           data: this.data
         }
-        API.ApprovePending(params).then((response) => {
+        API.ApproveOfficial(params).then((response) => {
           console.log(response)
           this.getData()
           this.$message({
-            message: 'Successfully Rejected Pending Data',
+            message: 'Successfully Rejected Pending Official',
             type: 'success'
           })
         }).catch((error) => {
@@ -101,11 +101,11 @@
         var params = {
           data: this.data
         }
-        API.RejectPending(params).then((response) => {
+        API.RejectOfficial(params).then((response) => {
           console.log(response)
           this.getData()
           this.$message({
-            message: 'Successfully Rejected Pending Data',
+            message: 'Successfully Rejected Pending Official',
             type: 'success'
           })
         }).catch((error) => {

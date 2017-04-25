@@ -36,11 +36,14 @@
         console.log(data)
         this.$validator.validateAll().then((result) => {
           API.authenticate(data).then((response) => {
+            console.log(response)
             if (response.body) {
               if (response.body[0].User_type === 'city_scientist') {
                 this.$router.push({name: 'ScientistDefault'})
               } else if (response.body[0].User_type === 'administrator') {
                 this.$router.push({name: 'AdminDefault'})
+              } else if (response.body[0].User_type === 'city_official') {
+                this.$router.push({name: 'OfficialDefault'})
               }
             }
           }).catch((error) => {
